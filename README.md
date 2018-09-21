@@ -24,7 +24,8 @@ or the variant with REST only
 
 Now you can connecto to http://localhost:8080 to access the application with the bundled Libreoffice    
 For more please check the wiki at  https://github.com/sbraconnier/jodconverter
-    
+
+![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/webapp.png)    
 ## Build youerself
 
     make build
