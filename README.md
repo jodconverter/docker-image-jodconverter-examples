@@ -1,6 +1,8 @@
 ## Wat
 
-This docker image should help you running jodconverter as a webapp, which then starts libreoffice in headless mode. 
+Uses the great implementation of Simon Braconnier https://github.com/sbraconnier/jodconverter to offer LibreOffice as an Document-Converter Web-Service.   
+
+This docker image should help you running jodconverter as a WebApp utilizing the packaged LibreOffice for conversions. 
 Ultimately this should be your "document conversion chain" service
 
 ## Builds info
@@ -22,5 +24,9 @@ Now you can connecto to http://localhost:8080 to access the application with the
     make start
     
 now see above under "Run" how to access it
+
+## Credits
+
+All of those please forward to https://github.com/sbraconnier/jodconverter - he does the real work :) 
 
     
