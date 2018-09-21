@@ -7,18 +7,34 @@ RUN apt-get update && apt-get -y install \
 RUN apt-get -y install libreoffice
 
 # build our jodconvert spring up
-FROM openjdk:10-jdk as jodconverter-spring-build
+FROM openjdk:10-jdk as jodconverter-builder
 RUN apt-get update \
   && apt-get -y install git gradle \
-  && git clone https://github.com/sbraconnier/jodconverter /tmp/jodconverter
+  && git clone https://github.com/sbraconnier/jodconverter /tmp/jodconverter \
+  && mkdir /dist
 
+
+
+FROM jodconverter-builder as jodconverter-spring
 WORKDIR /tmp/jodconverter/jodconverter-samples/jodconverter-sample-spring-boot
-RUN mkdir /dist \
-  # && gradle war \ # this actually does not work, why .. not output war is generated
-  && gradle build \
-  && cp build/libs/*.war /dist/jodconverter-spring.war
+RUN gradle build \
+  && cp build/libs/*SNAPSHOT.war /dist/jodconverter-spring.war
 
-FROM libreoffice
+
+
+FROM jodconverter-builder as jodconverter-rest
+WORKDIR /tmp/jodconverter/jodconverter-samples/jodconverter-sample-rest
+RUN gradle build \
+  && cp build/libs/*SNAPSHOT.jar /dist/jodconverter-rest.jar
+
+
+
+FROM libreoffice as rest
+RUN mkdir -p /opt/jodconverter
+COPY --from=jodconverter-rest /dist/jodconverter-rest.jar /opt/jodconverter/jodconverter-rest.jar
+CMD ["java","-jar","/opt/jodconverter/jodconverter-rest.jar"]
+
+FROM libreoffice as spring
 RUN mkdir -p /opt/jodconverter-spring
-COPY --from=jodconverter-spring-build /dist/jodconverter-spring.war /opt/jodconverter-spring/jodconverter-spring.war
-CMD ["java","-jar","/opt/jodconverter-spring/jodconverter-spring.war"]
+COPY --from=jodconverter-spring /dist/jodconverter-spring.war /opt/jodconverter/jodconverter-spring.war
+CMD ["java","-jar","/opt/jodconverter/jodconverter-spring.war"]
