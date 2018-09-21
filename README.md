@@ -16,7 +16,10 @@ Ultimately this should be your "document conversion chain" service
 
     docker run --rm -p 8080:8080 eugenmayer/jodconverter:spring
 
-Now you can connecto to http://localhost:8080 to access the application with the bundled Libreoffice    
+Now you can connecto to http://localhost:8080 to access the application with the bundled Libreoffice 
+And that is how it looks like from the Web-Interface
+
+![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/webapp.png)
     
 ## Build youerself
 
