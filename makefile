@@ -15,4 +15,4 @@ start:
 start-spring: start
 
 start-rest:
-	docker run --rm -p 38080:8080 eugenmayer/jodconverter:rest
+	docker run --rm -p 8080:8080 eugenmayer/jodconverter:rest
