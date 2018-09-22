@@ -2,7 +2,7 @@
 
 Uses the great implementation of Simon Braconnier https://github.com/sbraconnier/jodconverter to offer LibreOffice as an Document-Converter Web-Service.   
 
-This docker image should help you running jodconverter as a WebApp utilizing the packaged LibreOffice for conversions. 
+This docker image is a "all you need" and should help you running jodconverter as a WebApp utilizing the packaged LibreOffice for conversions. 
 Ultimately this should be your "document conversion chain" service
 
 ## Builds info
@@ -12,6 +12,8 @@ Ultimately this should be your "document conversion chain" service
 - using glibc > 1.53 to fix CPU usage of LibreOffice
 - LibreOffice is 6.1 right now
 
+Hint: We cannot split JODconverter and libreoffice into two seperate images since for now, jodconverter has to be running on the same machine as LibreOffice.
+The main reason behind this is, that jodconverter does manage the LibreOffice instances itself, starts and stop them. It does not just connect to it (and if, it uses a local socket)
 
 ## Run
 
@@ -44,5 +46,5 @@ now see above under "Run" how to access it
 ## Credits
 
 All of those please forward to https://github.com/sbraconnier/jodconverter - he does the real work :) 
-
+And of course also credits to LibreOffice for actually giving us the headless mode and the conversion options in the first place
     
