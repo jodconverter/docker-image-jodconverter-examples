@@ -9,6 +9,7 @@ Ultimately this should be your "document conversion chain" service
 
 - Office OpenJDK 10 Java (since that is what we want with docker)
 - Debian SID
+- using glibc > 1.53 to fix CPU usage of LibreOffice
 - LibreOffice is 6.1 right now
 
 
