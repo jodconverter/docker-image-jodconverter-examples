@@ -18,14 +18,19 @@ Thats the variant with a web-GUI (see screenshot)
 
     docker run --rm -p 8080:8080 eugenmayer/jodconverter:spring
     
-or the variant with REST only
+Now you can connect to http://localhost:8080 with a nice web-ui for conversion
+![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/webapp.png)  
 
-    docker run --rm -p 8080:8080 eugenmayer/jodconverter:rest    
+Or you pick the variant a REST interface only only
 
-Now you can connecto to http://localhost:8080 to access the application with the bundled Libreoffice    
-For more please check the wiki at  https://github.com/sbraconnier/jodconverter
+    docker run --rm -p 8080:8080 eugenmayer/jodconverter:rest
+    
+Now go on http://localhost:8080/swagger-ui.html to inspect the available endpoints. Docs under
+![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/rest.png)  
+ 
+For more please check the wiki at https://github.com/sbraconnier/jodconverter
 
-![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/webapp.png)    
+  
 ## Build youerself
 
     make build
