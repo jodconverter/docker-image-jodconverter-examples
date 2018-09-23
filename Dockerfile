@@ -1,12 +1,12 @@
 # setup our needed libreoffice engaged server with newest glibc
-FROM openjdk:10.0-jre as libreoffice
+FROM openjdk:10.0-jre as jodconverter-base
 RUN apt-get update && apt-get -y install \
         apt-transport-https locales-all libpng16-16 libxinerama1 libgl1-mesa-glx libfontconfig1 libfreetype6 libxrender1 \
         libxcb-shm0 libxcb-render0 adduser cpio findutils
 
 RUN apt-get -y install libreoffice
 
-# build our jodconvert spring up
+# build our jodconvert builder, so source code with build tools
 FROM openjdk:10-jdk as jodconverter-builder
 RUN apt-get update \
   && apt-get -y install git gradle \
@@ -15,10 +15,10 @@ RUN apt-get update \
 
 
 
-FROM jodconverter-builder as jodconverter-spring
+FROM jodconverter-builder as jodconverter-gui
 WORKDIR /tmp/jodconverter/jodconverter-samples/jodconverter-sample-spring-boot
 RUN gradle build \
-  && cp build/libs/*SNAPSHOT.war /dist/jodconverter-spring.war
+  && cp build/libs/*SNAPSHOT.war /dist/jodconverter-gui.war
 
 
 
@@ -28,13 +28,13 @@ RUN gradle build \
   && cp build/libs/*SNAPSHOT.jar /dist/jodconverter-rest.jar
 
 
-
-FROM libreoffice as rest
+#### now the production stuff
+FROM jodconverter-base as rest
 RUN mkdir -p /opt/jodconverter
 COPY --from=jodconverter-rest /dist/jodconverter-rest.jar /opt/jodconverter/jodconverter-rest.jar
 CMD ["java","-jar","/opt/jodconverter/jodconverter-rest.jar"]
 
-FROM libreoffice as spring
-RUN mkdir -p /opt/jodconverter-spring
-COPY --from=jodconverter-spring /dist/jodconverter-spring.war /opt/jodconverter/jodconverter-spring.war
-CMD ["java","-jar","/opt/jodconverter/jodconverter-spring.war"]
+FROM jodconverter-base as gui
+RUN mkdir -p /opt/jodconverter-gui
+COPY --from=jodconverter-gui /dist/jodconverter-gui.war /opt/jodconverter/jodconverter-gui.war
+CMD ["java","-jar","/opt/jodconverter/jodconverter-gui.war"]

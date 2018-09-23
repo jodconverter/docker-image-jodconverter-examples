@@ -1,18 +1,19 @@
 build:
-	docker build --target spring . -t eugenmayer/jodconverter:spring
+	docker build --target gui . -t eugenmayer/jodconverter:gui
 	docker build --target rest . -t eugenmayer/jodconverter:rest
+	docker build --target libreoffice . -t eugenmayer/jodconverter:base
 
 push:
-	docker push eugenmayer/jodconverter:spring
+	docker push eugenmayer/jodconverter:gui
 	docker push eugenmayer/jodconverter:rest
+	docker push eugenmayer/jodconverter:base
 
-start-cli:
-	docker run --rm -it eugenmayer/jodconverter:spring bash
+start-gui: stop
+	docker run --name jodconverter-spring --rm -p 8080:8080 eugenmayer/jodconverter:gui
 
-start:
-	docker run --rm -p 8080:8080 eugenmayer/jodconverter:spring
+start-rest: stop
+	docker run --name jodconverter-rest --rm -p 8080:8080 eugenmayer/jodconverter:rest
 
-start-spring: start
-
-start-rest:
-	docker run --rm -p 8080:8080 eugenmayer/jodconverter:rest
+stop:
+	docker stop --name jodconverter-rest > /dev/null 2>&1 || true
+	docker stop --name jodconverter-spring > /dev/null 2>&1 || true
