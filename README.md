@@ -28,7 +28,7 @@ Or you pick the variant a REST interface only only
 
     docker run --memory 512m  --rm -p 8080:8080 eugenmayer/jodconverter:rest
     
-Now go on http://localhost:8080/swagger-ui.html to inspect the available endpoints. Docs under
+Now go on `http://localhost:8080/swagger-ui.html` to inspect the available endpoints. Docs under
 ![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/rest.png)  
  
 For more please check the wiki at https://github.com/sbraconnier/jodconverter
