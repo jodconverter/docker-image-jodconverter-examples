@@ -19,14 +19,14 @@ The main reason behind this is, that [JODconverter](https://github.com/sbraconni
 
 Thats the variant with a web-GUI (see screenshot)
 
-    docker run --rm -p 8080:8080 eugenmayer/jodconverter:gui
+    docker run --memory 512m --rm -p 8080:8080 eugenmayer/jodconverter:gui
     
 Now you can connect to http://localhost:8080 with a nice web-ui for conversion
 ![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/webapp.png)  
 
 Or you pick the variant a REST interface only only
 
-    docker run --rm -p 8080:8080 eugenmayer/jodconverter:rest
+    docker run --memory 512m  --rm -p 8080:8080 eugenmayer/jodconverter:rest
     
 Now go on http://localhost:8080/swagger-ui.html to inspect the available endpoints. Docs under
 ![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/rest.png)  
