@@ -36,8 +36,8 @@ For more please check the wiki at https://github.com/sbraconnier/jodconverter
 ## Docker images
 
 - `eugenmayer/jodconverter:gui` - the WebGUI, spring based converter
-- `eugenmayer/jodconverter:rest`
-- `eugenmayer/jodconverter:base`
+- `eugenmayer/jodconverter:rest` - rest only variant
+- `eugenmayer/jodconverter:base` - libreoffice included, also start scripts but now actual applications
   
 ## Build youerself
 
@@ -50,6 +50,6 @@ now see above under "Run" how to access it
 
 ## Credits
 
-All of those please forward to https://github.com/sbraconnier/jodconverter - he does the real work :) 
-And of course also credits to LibreOffice for actually giving us the headless mode and the conversion options in the first place
+All of those please forward to [sbraconnier's jodconverter](https://github.com/sbraconnier/jodconverter) - he does the real work :) 
+And of course also credits to [LibreOffice](https://de.libreoffice.org/) for actually giving us the headless mode and the conversion options in the first place
     
