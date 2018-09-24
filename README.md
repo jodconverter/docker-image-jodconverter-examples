@@ -38,7 +38,24 @@ For more please check the wiki at https://github.com/sbraconnier/jodconverter
 - `eugenmayer/jodconverter:gui` - the WebGUI, spring based converter
 - `eugenmayer/jodconverter:rest` - rest only variant
 - `eugenmayer/jodconverter:base` - libreoffice included, also start scripts but now actual applications
-  
+
+### Configuration
+
+You can configure the docker images by mounting `/etc/app/application.properties` and put whatever you like into them.
+
+For example if you like to have 2 LibreOffice instances, you would put into the file
+
+```properties
+jodconverter.local.port-numbers: 2002, 2003
+# change the tmp folder
+jodconverter.local.working-dir: /tmp
+# change upload sizes
+spring.servlet.multipart.max-file-size: 5MB
+spring.servlet.multipart.max-request-size: 5MB
+# change the server port (where the REST app is listenting
+server.port=8090
+```
+
 ## Build youerself
 
     make build
