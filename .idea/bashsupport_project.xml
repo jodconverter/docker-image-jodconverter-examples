@@ -5,6 +5,7 @@
       <set>
         <option value="JAR_FILE_BASEDIR" />
         <option value="JAR_FILE_NAME" />
+        <option value="LOG_BASE_DIR" />
       </set>
     </option>
   </component>

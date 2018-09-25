@@ -28,4 +28,12 @@ function calculate_java_mem_opts()
 calculate_java_mem_opts
 
 echo "Java mem options ${JAVA_MEM_OPTS}"
-exec java -jar ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME} "$@" ${JAVA_MEM_OPTS} > >(tee -a ${LOG_BASE_DIR}/app.log) 2> >(tee -a ${LOG_BASE_DIR}/app.err >&2)
+
+
+if [ "$1" = "java" ]; then
+    # the case where the user uses his own java -jar startup command - let him do that
+    exec "$@" > >(tee -a ${LOG_BASE_DIR}/app.log) 2> >(tee -a ${LOG_BASE_DIR}/app.err >&2)
+else
+    exec java ${JAVA_MEM_OPTS} -jar ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME} "$@" > >(tee -a ${LOG_BASE_DIR}/app.log) 2> >(tee -a ${LOG_BASE_DIR}/app.err >&2)
+fi
+
