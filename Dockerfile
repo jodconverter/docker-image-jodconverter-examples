@@ -9,11 +9,10 @@ ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log
 
 COPY bin/docker-entrypoint.sh /docker-entrypoint.sh
-COPY bin/java-buildpack-memory-calculator-linux /usr/local/bin/java-buildpack-memory-calculator-linux
 
 RUN mkdir -p ${JAR_FILE_BASEDIR} /etc/app \
   && touch /etc/app/application.properties \
-  && chmod +x /docker-entrypoint.sh /usr/local/bin/java-buildpack-memory-calculator-linux
+  && chmod +x /docker-entrypoint.sh
 
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
