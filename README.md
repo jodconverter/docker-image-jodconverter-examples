@@ -5,6 +5,8 @@ Uses the great implementation of Simon Braconnier [JODconverter](https://github.
 This docker image is a "all you need" and should help you running [JODconverter](https://github.com/sbraconnier/jodconverter) as a WebApp utilizing the packaged LibreOffice for conversions. 
 Ultimately this should be your "document conversion chain" service
 
+To run this in a production-ready stack, please see the follow-up project [eugenmayer/converter](https://github.com/EugenMayer/converter)
+
 ## Builds info
 
 - Office OpenJDK 10 Java (since that is what we want with docker)
@@ -22,6 +24,7 @@ Thats the variant with a web-GUI (see screenshot)
     docker run --memory 512m --rm -p 8080:8080 eugenmayer/jodconverter:gui
     
 Now you can connect to http://localhost:8080 with a nice web-ui for conversion
+
 ![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/webapp.png)  
 
 Or you pick the variant a REST interface only only
@@ -29,9 +32,12 @@ Or you pick the variant a REST interface only only
     docker run --memory 512m  --rm -p 8080:8080 eugenmayer/jodconverter:rest
     
 Now go on `http://localhost:8080/swagger-ui.html` to inspect the available endpoints. Docs under
+
 ![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/rest.png)  
  
 For more please check the wiki at https://github.com/sbraconnier/jodconverter
+
+To run this in a production-ready stack, please see the follow-up project [eugenmayer/converter](https://github.com/EugenMayer/converter)
 
 ## Docker images
 
