@@ -4,6 +4,8 @@ RUN echo "deb http://ftp2.de.debian.org/debian stretch-backports main contrib no
 RUN apt-get update && apt-get -y install \
         apt-transport-https locales-all libpng16-16 libxinerama1 libgl1-mesa-glx libfontconfig1 libfreetype6 libxrender1 \
         libxcb-shm0 libxcb-render0 adduser cpio findutils \
+        # procps needed for us finding the libreoffice process, see https://github.com/sbraconnier/jodconverter/issues/127#issuecomment-463668183
+        procps \
     && apt-get -y install -t stretch-backports libreoffice
 ENV JAR_FILE_NAME=app.war
 ENV JAR_FILE_BASEDIR=/opt/app
@@ -23,7 +25,8 @@ CMD ["-Dspring.config.location=/etc/app/application.properties"]
 FROM openjdk:11-jdk as jodconverter-builder
 RUN apt-get update \
   && apt-get -y install git \
-  && git clone https://github.com/sbraconnier/jodconverter /tmp/jodconverter \
+  #&& git clone https://github.com/sbraconnier/jodconverter /tmp/jodconverter \
+  && git clone https://github.com/eugenmayer/jodconverter --branch feature/java-11-compat /tmp/jodconverter \
   && mkdir /dist
 
 
