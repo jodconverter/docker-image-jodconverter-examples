@@ -6,7 +6,8 @@ RUN apt-get update && apt-get -y install \
         libxcb-shm0 libxcb-render0 adduser cpio findutils \
         # procps needed for us finding the libreoffice process, see https://github.com/sbraconnier/jodconverter/issues/127#issuecomment-463668183
         procps \
-    && apt-get -y install -t stretch-backports libreoffice
+    && apt-get -y install -t stretch-backports libreoffice --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 ENV JAR_FILE_NAME=app.war
 ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log

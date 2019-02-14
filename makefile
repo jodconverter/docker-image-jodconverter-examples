@@ -4,9 +4,9 @@ build:
 	docker build --target rest . -t eugenmayer/jodconverter:rest
 
 push:
+	docker push eugenmayer/jodconverter:base
 	docker push eugenmayer/jodconverter:gui
 	docker push eugenmayer/jodconverter:rest
-	docker push eugenmayer/jodconverter:base
 
 start-gui: stop
 	docker run --name jodconverter-spring -m 512m --rm -p 8080:8080 eugenmayer/jodconverter:gui
