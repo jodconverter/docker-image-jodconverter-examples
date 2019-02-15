@@ -10,11 +10,9 @@ To run this in a production-ready stack, please see the follow-up project [eugen
 ## Builds info
 
 - Official OpenJDK 11 Java (since that is what we want with docker)
-~~- Debian SID~~
-~~- using glibc > 1.53 to fix CPU usage of LibreOffice~~
+- Debian SID
+- using glibc > 1.53 to fix CPU usage of LibreOffice
 - LibreOffice is 6.1.5+ right now
-
-Hint: We are currently no longer using Debian SID / glibc fix since we are actually using the official openJDK 11 docker image. Not sure this will reintroduce the bug yet, see #4
 
 Hint: We cannot split [JODconverter](https://github.com/sbraconnier/jodconverter) and LibreOffice into two seperate images since for now, jodconverter has to be running on the same machine as LibreOffice.
 The main reason behind this is, that [JODconverter](https://github.com/sbraconnier/jodconverter) does manage the LibreOffice instances itself, starts and stop them. It does not just connect to it (and if, it uses a local socket)
