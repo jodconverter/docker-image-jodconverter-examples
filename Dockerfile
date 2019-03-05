@@ -34,7 +34,7 @@ CMD ["-Dspring.config.location=/etc/app/application.properties"]
 FROM openjdk:11-jdk as jodconverter-builder
 RUN apt-get update \
   && apt-get -y install git \
-  && git clone https://github.com/eugenmayer/jodconverter --branch feature/java-11-compat /tmp/jodconverter \
+  && git clone https://github.com/sbraconnier/jodconverter /tmp/jodconverter \
   && mkdir /dist
 
 #  ---------------------------------- gui builder
