@@ -27,7 +27,7 @@ RUN mkdir -p ${JAR_FILE_BASEDIR} /etc/app \
 
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["-Dspring.config.location=/etc/app/application.properties"]
+CMD ["--spring.config.additional-location=/etc/app/"]
 
 #  ----------------------------------  build our jodconvert builder, so source code with build tools
 # TODO: java11 compat yet not given for jodconverter https://github.com/sbraconnier/jodconverter/pull/128
