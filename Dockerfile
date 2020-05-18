@@ -48,7 +48,7 @@ RUN ../../gradlew build \
 FROM jodconverter-builder as jodconverter-rest
 WORKDIR /tmp/jodconverter/jodconverter-samples/jodconverter-sample-rest
 RUN ../../gradlew build \
-  && cp build/libs/*SNAPSHOT.jar /dist/jodconverter-rest.jar
+  && cp build/libs/*SNAPSHOT.war /dist/jodconverter-rest.war
 
 
 #  ----------------------------------  GUI prod image
@@ -57,6 +57,5 @@ COPY --from=jodconverter-gui /dist/jodconverter-gui.war ${JAR_FILE_BASEDIR}/${JA
 
 #  ----------------------------------  REST prod image
 FROM jodconverter-base as rest
-ENV JAR_FILE_NAME=app.jar
-COPY --from=jodconverter-rest /dist/jodconverter-rest.jar ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
+COPY --from=jodconverter-rest /dist/jodconverter-rest.war ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
 
