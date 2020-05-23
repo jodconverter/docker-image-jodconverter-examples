@@ -30,7 +30,6 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["--spring.config.additional-location=/etc/app/"]
 
 #  ----------------------------------  build our jodconvert builder, so source code with build tools
-# TODO: java11 compat yet not given for jodconverter https://github.com/sbraconnier/jodconverter/pull/128
 FROM openjdk:11-jdk as jodconverter-builder
 RUN apt-get update \
   && apt-get -y install git \
