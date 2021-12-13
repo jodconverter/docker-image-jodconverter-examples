@@ -4,7 +4,7 @@
 FROM bellsoft/liberica-openjdk-debian:11 as jodconverter-base
 RUN apt-get update && apt-get -y install \
   apt-transport-https locales-all libpng16-16 libxinerama1 libgl1-mesa-glx libfontconfig1 libfreetype6 libxrender1 \
-  libxcb-shm0 libxcb-render0 adduser cpio findutils \
+  libxcb-shm0 libxcb-render0 adduser cpio findutils gosu \
   # procps needed for us finding the libreoffice process, see https://github.com/sbraconnier/jodconverter/issues/127#issuecomment-463668183
   procps \
   # only for stretch
@@ -51,9 +51,7 @@ RUN ../../gradlew build \
 #  ----------------------------------  GUI prod image
 FROM jodconverter-base as gui
 COPY --from=jodconverter-gui /dist/jodconverter-gui.war ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
-USER jodconverter 
 
 #  ----------------------------------  REST prod image
 FROM jodconverter-base as rest
 COPY --from=jodconverter-rest /dist/jodconverter-rest.war ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
-USER jodconverter 
