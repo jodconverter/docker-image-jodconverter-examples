@@ -26,6 +26,7 @@ RUN mkdir -p ${JAR_FILE_BASEDIR} /etc/app \
 
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["--spring.config.additional-location=optional:/etc/app/"]
 
 #  ----------------------------------  build our jodconvert builder, so source code with build tools
 FROM openjdk:11-jdk as jodconverter-builder
