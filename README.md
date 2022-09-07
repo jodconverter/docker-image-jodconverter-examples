@@ -33,13 +33,13 @@ Or you pick the variant a REST interface only
 
 For more please check the wiki at https://github.com/sbraconnier/jodconverter
 
-To run this in a production-ready stack, please see the follow-up project [eugenmayer/converter](https://github.com/EugenMayer/converter)
+To run this in a production-ready stack, please see the follow-up project [eugenmayer/officeconverter](https://github.com/EugenMayer/officeconverter)
 
 ## Docker images
 
-- `eugenmayer/jodconverter:base` - OpenJDK 11: libreoffice included, also start scripts but now actual applications
-- `eugenmayer/jodconverter:gui` - OpenJDK 10 yet (see [this issue](https://github.com/sbraconnier/jodconverter/pull/128)): the WebGUI, spring based converter
-- `eugenmayer/jodconverter:rest` - OpenJDK 10 yet (see [this issue](https://github.com/sbraconnier/jodconverter/pull/128)) rest only variant
+- `ghcr.io/eugenmayer/jodconverter:base` - OpenJDK 11: libreoffice included, also start scripts but now actual applications
+- `ghcr.io/eugenmayer/jodconverter:gui` - OpenJDK 10 yet (see [this issue](https://github.com/sbraconnier/jodconverter/pull/128)): the WebGUI, spring based converter
+- `ghcr.io/eugenmayer/jodconverter:rest` - OpenJDK 10 yet (see [this issue](https://github.com/sbraconnier/jodconverter/pull/128)) rest only variant
 
 ### Configuration
 
