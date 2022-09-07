@@ -4,7 +4,7 @@
 FROM bellsoft/liberica-openjdk-debian:11 as jodconverter-base
 RUN apt-get update && apt-get -y install \
   apt-transport-https locales-all libpng16-16 libxinerama1 libgl1-mesa-glx libfontconfig1 libfreetype6 libxrender1 \
-  libxcb-shm0 libxcb-render0 adduser cpio findutils \
+  libxcb-shm0 libxcb-render0 adduser cpio findutils gosu \
   # procps needed for us finding the libreoffice process, see https://github.com/sbraconnier/jodconverter/issues/127#issuecomment-463668183
   procps \
   # only for stretch
@@ -19,8 +19,10 @@ ENV LOG_BASE_DIR=/var/log
 COPY bin/docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN mkdir -p ${JAR_FILE_BASEDIR} /etc/app \
-  && touch /etc/app/application.properties \
-  && chmod +x /docker-entrypoint.sh
+  && touch /etc/app/application.properties /var/log/app.log /var/log/app.err \
+  && chmod +x /docker-entrypoint.sh \
+  && useradd -m jodconverter \
+  && chown jodconverter:jodconverter /var/log/app.log /var/log/app.err
 
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
@@ -54,4 +56,3 @@ COPY --from=jodconverter-gui /dist/jodconverter-gui.war ${JAR_FILE_BASEDIR}/${JA
 #  ----------------------------------  REST prod image
 FROM jodconverter-base as rest
 COPY --from=jodconverter-rest /dist/jodconverter-rest.war ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
-
