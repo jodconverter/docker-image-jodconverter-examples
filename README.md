@@ -19,7 +19,7 @@ The main reason behind this is, that [JODconverter](https://github.com/sbraconni
 
 Thats the variant with a web-GUI (see screenshot)
 
-    docker run --memory 512m --rm -p 8080:8080 eugenmayer/jodconverter:gui
+    docker run --memory 512m --rm -p 8080:8080 ghcr.io/eugenmayer/jodconverter:gui
 
 Now you can connect to http://localhost:8080 with a nice web-ui for conversion
 
@@ -27,7 +27,7 @@ Now you can connect to http://localhost:8080 with a nice web-ui for conversion
 
 Or you pick the variant a REST interface only
 
-    docker run --memory 512m  --rm -p 8080:8080 eugenmayer/jodconverter:rest
+    docker run --memory 512m  --rm -p 8080:8080 ghcr.io/eugenmayer/jodconverter:rest
 
 ![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/rest.png)
 
