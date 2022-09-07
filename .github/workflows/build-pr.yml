@@ -1,9 +1,9 @@
-name: docker publish
+name: docker pr
 
 on:
   push:
-    tags:
-      - '*'
+    branches-ignore:
+      - "main"
 
 env:
   IMAGE_FQDN: ghcr.io/eugenmayer/jodconverter
@@ -29,28 +29,25 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          push: true
+          push: false
           target: jodconverter-base
           tags: | 
             ${{ env.IMAGE_FQDN }}:base
-            ${{ env.IMAGE_FQDN }}:base-${{ github.ref_name }}
       - name: Build and push gui
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64
-          push: true
+          push: false
           target: jodconverter-gui
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
-            ${{ env.IMAGE_FQDN }}:gui-${{ github.ref_name }}
       - name: Build and push rest
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64
-          push: true
+          push: false
           target: jodconverter-rest
           tags: |
             ${{ env.IMAGE_FQDN }}:rest
-            ${{ env.IMAGE_FQDN }}:rest-${{ github.ref_name }}
