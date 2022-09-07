@@ -1,7 +1,7 @@
 #  ---------------------------------- setup our needed libreoffice engaged server with newest glibc
 # we cannot use the official image since we then cannot have sid and the glibc fix
 # we could use jre, but would need to ensure we use a jdk variant in development. For OSS we make it easier here
-FROM bellsoft/liberica-openjdk-debian:11 as jodconverter-base
+FROM bellsoft/liberica-openjdk-debian:17 as jodconverter-base
 RUN apt-get update && apt-get -y install \
   apt-transport-https locales-all libpng16-16 libxinerama1 libgl1-mesa-glx libfontconfig1 libfreetype6 libxrender1 \
   libxcb-shm0 libxcb-render0 adduser cpio findutils gosu \
@@ -29,7 +29,7 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["--spring.config.additional-location=optional:/etc/app/"]
 
 #  ----------------------------------  build our jodconvert builder, so source code with build tools
-FROM openjdk:11-jdk as jodconverter-builder
+FROM openjdk:17-jdk as jodconverter-builder
 RUN apt-get update \
   && apt-get -y install git \
   && git clone https://github.com/sbraconnier/jodconverter /tmp/jodconverter \
