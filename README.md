@@ -1,3 +1,5 @@
+[![build-and-push](https://github.com/EugenMayer/docker-image-jodconverter/actions/workflows/build.yml/badge.svg)](https://github.com/EugenMayer/docker-image-jodconverter/actions/workflows/build.yml)
+
 ## Wat
 
 Uses the great implementation of Simon Braconnier [JODconverter](https://github.com/sbraconnier/jodconverter) to offer LibreOffice as an Document-Converter Web-Service.
