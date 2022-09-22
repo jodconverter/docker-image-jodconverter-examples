@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -y install \
   # only for stretch
   #&& apt-get -y install -t stretch-backports libreoffice --no-install-recommends \
   # sid variant
-  && apt-get -y install libreoffice --no-install-recommends \
+  && apt-get -y install libreoffice libreoffice-java-common --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 ENV JAR_FILE_NAME=app.war
 ENV JAR_FILE_BASEDIR=/opt/app
