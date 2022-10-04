@@ -11,7 +11,7 @@ To run this in a production-ready stack, please see the follow-up project [eugen
 
 ## Builds info
 
-- Official OpenJDK 11 Java (bellsoft debian based)(since that is what we want with docker)
+- Official OpenJDK 17 Java (bellsoft debian based)(since that is what we want with docker)
 - LibreOffice is 6.1.5+ right now
 
 Hint: We cannot split [JODconverter](https://github.com/sbraconnier/jodconverter) and LibreOffice into two separate images since for now, `JODconverter` has to be running on the same machine as LibreOffice.
