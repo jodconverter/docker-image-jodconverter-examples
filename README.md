@@ -4,10 +4,12 @@
 
 Uses the great implementation of Simon Braconnier [JODconverter](https://github.com/sbraconnier/jodconverter) to offer LibreOffice as an Document-Converter Web-Service.
 
-This docker image is a "all you need" and should help you running [JODconverter](https://github.com/sbraconnier/jodconverter) as a WebApp utilizing the packaged LibreOffice for conversions.
-Ultimately this should be your "document conversion chain" service
+This docker image is a "all you need" and should help you running [JODconverter](https://github.com/sbraconnier/jodconverter) as a WebApp utilizing the packaged LibreOffice for conversions. Ultimately this should be your "document conversion chain" service.
 
-To run this in a production-ready stack, please see the follow-up project [eugenmayer/converter](https://github.com/EugenMayer/converter)
+To run this in a production-ready stack, please see the follow-up project [eugenmayer/officeconverter](https://github.com/EugenMayer/officeconverter).
+
+**HINT:**
+The current implementation if feature complete and i do not plan to add anything else in terms of feature. If you want a feature to be added, hyou will need to put your time into it and open a PR (i'am happyt to review those)
 
 ## Builds info
 
