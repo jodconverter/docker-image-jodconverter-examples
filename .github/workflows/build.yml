@@ -40,7 +40,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          target: jodconverter-gui
+          target: gui
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
             ${{ env.IMAGE_FQDN }}:gui-${{ github.ref_name }}
@@ -50,7 +50,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          target: jodconverter-rest
+          target: rest
           tags: |
             ${{ env.IMAGE_FQDN }}:rest
             ${{ env.IMAGE_FQDN }}:rest-${{ github.ref_name }}
