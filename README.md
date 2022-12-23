@@ -27,13 +27,13 @@ Thats the variant with a web-GUI (see screenshot)
 
 Now you can connect to http://localhost:8080 with a nice web-ui for conversion
 
-![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/webapp.png)
+![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/main/webapp.png)
 
 Or you pick the variant a REST interface only
 
     docker run --memory 512m  --rm -p 8080:8080 ghcr.io/eugenmayer/jodconverter:rest
 
-![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/master/rest.png)
+![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/main/rest.png)
 
 For more please check the wiki at https://github.com/sbraconnier/jodconverter
 
@@ -75,4 +75,4 @@ now see above under "Run" how to access it
 ## Credits
 
 All of those please forward to [sbraconnier's jodconverter](https://github.com/sbraconnier/jodconverter) - he does the real work :)
-And of course also credits to [LibreOffice](https://de.libreoffice.org/) for actually giving us the headless mode and the conversion options in the first place
+And of course also credits to [LibreOffice](https://de.libreoffice.org/) for actually giving us the headless mode and the conversion options in the first place.
