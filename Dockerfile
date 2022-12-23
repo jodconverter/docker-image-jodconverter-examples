@@ -38,14 +38,14 @@ RUN apt-get update \
 #  ---------------------------------- gui builder
 FROM jodconverter-builder as jodconverter-gui
 WORKDIR /tmp/jodconverter/jodconverter-samples/jodconverter-sample-spring-boot
-RUN ../../gradlew build \
+RUN ../../gradlew -x test build \
   && cp build/libs/*SNAPSHOT.war /dist/jodconverter-gui.war
 
 
 #  ----------------------------------  rest build
 FROM jodconverter-builder as jodconverter-rest
 WORKDIR /tmp/jodconverter/jodconverter-samples/jodconverter-sample-rest
-RUN ../../gradlew build \
+RUN ../../gradlew -x test build \
   && cp build/libs/*SNAPSHOT.war /dist/jodconverter-rest.war
 
 
