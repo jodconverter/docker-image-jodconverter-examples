@@ -54,7 +54,7 @@ jobs:
           target: jodconverter-build-rest
           build-args: |
             BASE_VERSION=${{ env.BASE_VERSION }}
-          push: push
+          push: true
           tags: |
             ${{ env.IMAGE_FQDN }}:rest
             ${{ env.IMAGE_FQDN }}:rest-${{ github.ref_name }}
@@ -67,7 +67,7 @@ jobs:
           target: jodconverter-build-gui
           build-args: |
             BASE_VERSION=${{ env.BASE_VERSION }}
-          push: push
+          push: true
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
             ${{ env.IMAGE_FQDN }}:gui-${{ github.ref_name }}

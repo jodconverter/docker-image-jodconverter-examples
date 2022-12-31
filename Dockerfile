@@ -21,7 +21,7 @@ CMD ["--spring.config.additional-location=optional:/etc/app/"]
 FROM bellsoft/liberica-openjdk-debian:17 as builder
 RUN apt-get update \
   && apt-get -y install git \
-  && git clone https://github.com/sbraconnier/jodconverter /tmp/jodconverter \
+  && git clone https://github.com/jodconverter/jodconverter /tmp/jodconverter \
   && mkdir /dist
 
 #  ---------------------------------- gui builder
