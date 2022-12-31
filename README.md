@@ -1,8 +1,8 @@
-[![build-and-push](https://github.com/EugenMayer/docker-image-jodconverter/actions/workflows/build.yml/badge.svg)](https://github.com/EugenMayer/docker-image-jodconverter/actions/workflows/build.yml)
+[![build-and-push](https://github.com/jodconverter/docker-image-jodconverter/actions/workflows/build.yml/badge.svg)](https://github.com/jodconverter/docker-image-jodconverter/actions/workflows/build.yml)
 
 ## Wat
 
-Utilizes the example projects of[JODconverter](https://github.com/jodconverter/jodconverter) to offer example projects to run JODconverter as a REST conversion GUI.
+Utilizes the example java projects of [JODconverter](https://github.com/jodconverter/jodconverter) to offer running examples within docker, e.g. to run JODconverter as a REST conversion GUI.
 
 Other projects:
     - The examples here are based on the [jodconverter-runtime](https://github.com/jodconverter/docker-image-jodconverter-runtime) docker image
@@ -12,17 +12,17 @@ Other projects:
 
 That's the variant with a web-GUI (see screenshot)
 
-    docker run --memory 512m --rm -p 8080:8080 ghcr.io/eugenmayer/jodconverter:gui
+    docker run --memory 512m --rm -p 8080:8080 ghcr.io/jodconverter/jodconverter-examples:gui
 
 Now you can connect to http://localhost:8080 with a nice web-ui for conversion
 
-![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/main/webapp.png)
+![Screenshot](https://github.com/jodconverter/docker-image-jodconverter/blob/main/webapp.png)
 
 Or you pick the variant a REST interface only
 
-    docker run --memory 512m  --rm -p 8080:8080 ghcr.io/eugenmayer/jodconverter:rest
+    docker run --memory 512m  --rm -p 8080:8080 ghcr.io/jodconverter/jodconverter-examples:rest
 
-![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/main/rest.png)
+![Screenshot](https://github.com/jodconverter/docker-image-jodconverter/blob/main/rest.png)
 
 For more please check the wiki at https://github.com/jodconverter/jodconverter
 
