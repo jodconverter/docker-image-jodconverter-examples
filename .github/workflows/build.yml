@@ -23,26 +23,26 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ github.token }}
-      - name: Build and push gui
+      - name: Build gui
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64
           push: false
-          target: jodconverter-gui
+          target: jodconverter-build-gui
           build-args: |
-            BASE_VERSION=${{ env.IMAGE_FQDN }}
+            BASE_VERSION=${{ env.BASE_VERSION }}
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
-      - name: Build and push rest
+      - name: Build rest
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64
           push: false
-          target: jodconverter-rest
+          target: jodconverter-build-rest
           build-args: |
-            BASE_VERSION=${{ env.IMAGE_FQDN }}
+            BASE_VERSION=${{ env.BASE_VERSION }}
           tags: |
             ${{ env.IMAGE_FQDN }}:rest
       - name: Push REST
@@ -51,9 +51,9 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          target: jodconverter-rest
+          target: jodconverter-build-rest
           build-args: |
-            BASE_VERSION=${{ env.IMAGE_FQDN }}
+            BASE_VERSION=${{ env.BASE_VERSION }}
           push: push
           tags: |
             ${{ env.IMAGE_FQDN }}:rest
@@ -64,9 +64,9 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          target: jodconverter-gui
+          target: jodconverter-build-gui
           build-args: |
-            BASE_VERSION=${{ env.IMAGE_FQDN }}
+            BASE_VERSION=${{ env.BASE_VERSION }}
           push: push
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
