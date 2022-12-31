@@ -31,7 +31,7 @@ jobs:
           push: false
           target: jodconverter-build-gui
           build-args: |
-            BASE_VERSION=${{ env.IMAGE_FQDN }}
+            BASE_VERSION=${{ env.BASE_VERSION }}
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
       - name: Build and push rest
@@ -42,7 +42,7 @@ jobs:
           push: false
           target: jodconverter-build-rest
           build-args: |
-            BASE_VERSION=${{ env.IMAGE_FQDN }}
+            BASE_VERSION=${{ env.BASE_VERSION }}
           tags: |
             ${{ env.IMAGE_FQDN }}:rest
       - name: Push REST
@@ -53,7 +53,7 @@ jobs:
           platforms: linux/amd64
           target: jodconverter-build-rest
           build-args: |
-            BASE_VERSION=${{ env.IMAGE_FQDN }}
+            BASE_VERSION=${{ env.BASE_VERSION }}
           push: push
           tags: |
             ${{ env.IMAGE_FQDN }}:rest
@@ -66,7 +66,7 @@ jobs:
           platforms: linux/amd64
           target: jodconverter-build-gui
           build-args: |
-            BASE_VERSION=${{ env.IMAGE_FQDN }}
+            BASE_VERSION=${{ env.BASE_VERSION }}
           push: push
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
