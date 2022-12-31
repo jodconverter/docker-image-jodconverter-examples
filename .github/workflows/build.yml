@@ -23,7 +23,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ github.token }}
-      - name: Build and push gui
+      - name: Build gui
         uses: docker/build-push-action@v3
         with:
           context: .
@@ -34,7 +34,7 @@ jobs:
             BASE_VERSION=${{ env.BASE_VERSION }}
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
-      - name: Build and push rest
+      - name: Build rest
         uses: docker/build-push-action@v3
         with:
           context: .

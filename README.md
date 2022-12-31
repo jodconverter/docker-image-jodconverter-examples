@@ -8,6 +8,9 @@ Other projects:
     - The examples here are based on the [jodconverter-runtime](https://github.com/jodconverter/docker-image-jodconverter-runtime) docker image
     - office conversion, production leaning - see [eugenmayer/officeconverter](https://github.com/EugenMayer/officeconverter).
 
+Hint: This project has moved from [eugenmayer/docker-image-jodconverter](https://github.com/eugenmayer/docker-image-jodconverter) to [jodconverter/docker-image-jodconverter](https://github.com/jodconverter/docker-image-jodconverter)
+since it is just the better home for obvious reasons :)
+
 ## Run examples
 
 That's the variant with a web-GUI (see screenshot)
