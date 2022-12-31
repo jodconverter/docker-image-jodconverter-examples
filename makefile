@@ -1,13 +1,12 @@
 build:
-	docker build --target jodconverter-base . -t ghcr.io/eugenmayer/jodconverter:base
-	docker build --target gui . -t ghcr.io/eugenmayer/jodconverter:gui
-	docker build --target rest . -t ghcr.io/eugenmayer/jodconverter:rest
+	docker build --build-arg BASE_VERSION=0.0.1 --target gui . -t ghcr.io/jodconverter/jodconverter:gui
+	docker build --build-arg BASE_VERSION=0.0.1 --target rest . -t ghcr.io/eugenmayer/jodconverter:rest
 
 start-gui: stop
-	docker run --name jodconverter-spring -m 512m --rm -p 8080:8080 ghcr.io/eugenmayer/jodconverter:gui
+	docker run --name jodconverter-spring -m 512m --rm -p 8080:8080 ghcr.io/jodconverter/jodconverter-example:gui
 
 start-rest: stop
-	docker run --name jodconverter-rest -m 512m --rm -p 8080:8080 ghcr.io/eugenmayer/jodconverter:rest
+	docker run --name jodconverter-rest -m 512m --rm -p 8080:8080 ghcr.io/jodconverter/jodconverter-example:rest
 
 stop:
 	docker stop --name jodconverter-rest > /dev/null 2>&1 || true

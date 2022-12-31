@@ -1,12 +1,11 @@
-name: docker publish
+name: docker
 
 on:
   push:
-    tags:
-      - '*'
 
 env:
-  IMAGE_FQDN: ghcr.io/eugenmayer/jodconverter
+  IMAGE_FQDN: ghcr.io/jodconverter/jodconverter-examples
+  BASE_VERSION: 0.0.1
 
 jobs:
   docker:
@@ -24,33 +23,51 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ github.token }}
-      - name: Build and push base
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          platforms: linux/amd64
-          push: true
-          target: jodconverter-base
-          tags: | 
-            ${{ env.IMAGE_FQDN }}:base
-            ${{ env.IMAGE_FQDN }}:base-${{ github.ref_name }}
       - name: Build and push gui
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64
-          push: true
-          target: gui
+          push: false
+          target: jodconverter-gui
+          build-args: |
+            BASE_VERSION=${{ env.IMAGE_FQDN }}
           tags: |
             ${{ env.IMAGE_FQDN }}:gui
-            ${{ env.IMAGE_FQDN }}:gui-${{ github.ref_name }}
       - name: Build and push rest
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64
-          push: true
-          target: rest
+          push: false
+          target: jodconverter-rest
+          build-args: |
+            BASE_VERSION=${{ env.IMAGE_FQDN }}
+          tags: |
+            ${{ env.IMAGE_FQDN }}:rest
+      - name: Push REST
+        uses: docker/build-push-action@v3
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          context: .
+          platforms: linux/amd64
+          target: jodconverter-rest
+          build-args: |
+            BASE_VERSION=${{ env.IMAGE_FQDN }}
+          push: push
           tags: |
             ${{ env.IMAGE_FQDN }}:rest
             ${{ env.IMAGE_FQDN }}:rest-${{ github.ref_name }}
+      - name: Push GUI
+        uses: docker/build-push-action@v3
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          context: .
+          platforms: linux/amd64
+          target: jodconverter-gui
+          build-args: |
+            BASE_VERSION=${{ env.IMAGE_FQDN }}
+          push: push
+          tags: |
+            ${{ env.IMAGE_FQDN }}:gui
+            ${{ env.IMAGE_FQDN }}:gui-${{ github.ref_name }}

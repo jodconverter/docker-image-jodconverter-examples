@@ -2,26 +2,15 @@
 
 ## Wat
 
-Uses the great implementation of Simon Braconnier [JODconverter](https://github.com/sbraconnier/jodconverter) to offer LibreOffice as an Document-Converter Web-Service.
+Utilizes the example projects of[JODconverter](https://github.com/jodconverter/jodconverter) to offer example projects to run JODconverter as a REST conversion GUI.
 
-This docker image is a "all you need" and should help you running [JODconverter](https://github.com/sbraconnier/jodconverter) as a WebApp utilizing the packaged LibreOffice for conversions. Ultimately this should be your "document conversion chain" service.
+Other projects:
+    - The examples here are based on the [jodconverter-runtime](https://github.com/jodconverter/docker-image-jodconverter-runtime) docker image
+    - office conversion, production leaning - see [eugenmayer/officeconverter](https://github.com/EugenMayer/officeconverter).
 
-To run this in a production-ready stack, please see the follow-up project [eugenmayer/officeconverter](https://github.com/EugenMayer/officeconverter).
+## Run examples
 
-**HINT:**
-The current implementation if feature complete and i do not plan to add anything else in terms of feature. If you want a feature to be added, hyou will need to put your time into it and open a PR (i'am happyt to review those)
-
-## Builds info
-
-- Official OpenJDK 17 Java (bellsoft debian based)(since that is what we want with docker)
-- LibreOffice is 6.1.5+ right now
-
-Hint: We cannot split [JODconverter](https://github.com/sbraconnier/jodconverter) and LibreOffice into two separate images since for now, `JODconverter` has to be running on the same machine as LibreOffice.
-The main reason behind this is, that [JODconverter](https://github.com/sbraconnier/jodconverter) does manage the LibreOffice instances itself, starts and stop them. It does not just connect to it (and if, it uses a local socket)
-
-## Run
-
-Thats the variant with a web-GUI (see screenshot)
+That's the variant with a web-GUI (see screenshot)
 
     docker run --memory 512m --rm -p 8080:8080 ghcr.io/eugenmayer/jodconverter:gui
 
@@ -35,15 +24,13 @@ Or you pick the variant a REST interface only
 
 ![Screenshot](https://github.com/EugenMayer/docker-image-jodconverter/blob/main/rest.png)
 
-For more please check the wiki at https://github.com/sbraconnier/jodconverter
-
-To run this in a production-ready stack, please see the follow-up project [eugenmayer/officeconverter](https://github.com/EugenMayer/officeconverter)
+For more please check the wiki at https://github.com/jodconverter/jodconverter
 
 ## Docker images
 
-- `ghcr.io/eugenmayer/jodconverter:base` - OpenJDK 17: libreoffice included, also start scripts but now actual applications
-- `ghcr.io/eugenmayer/jodconverter:gui` - OpenJDK 17: the WebGUI, spring based converter
-- `ghcr.io/eugenmayer/jodconverter:rest` - OpenJDK 17: rest only variant
+- `ghcr.io/jodconverter/jodconverter-base` - OpenJDK 17: libreoffice included, also start scripts but now actual applications
+- `ghcr.io/jodconverter/jodconverter-examples:gui` - OpenJDK 17: the WebGUI, spring based converter
+- `ghcr.io/jodconverter/jodconverter-examples:rest` - OpenJDK 17: rest only variant
 
 ### Configuration
 
@@ -74,5 +61,4 @@ now see above under "Run" how to access it
 
 ## Credits
 
-All of those please forward to [sbraconnier's jodconverter](https://github.com/sbraconnier/jodconverter) - he does the real work :)
-And of course also credits to [LibreOffice](https://de.libreoffice.org/) for actually giving us the headless mode and the conversion options in the first place.
+All of those please forward to [sbraconnier's jodconverter](https://github.com/jodconverter/jodconverter) - he does the real work :)
