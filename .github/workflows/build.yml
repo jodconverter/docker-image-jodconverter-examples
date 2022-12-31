@@ -29,7 +29,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: false
-          target: jodconverter-gui
+          target: jodconverter-build-gui
           build-args: |
             BASE_VERSION=${{ env.IMAGE_FQDN }}
           tags: |
@@ -40,7 +40,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: false
-          target: jodconverter-rest
+          target: jodconverter-build-rest
           build-args: |
             BASE_VERSION=${{ env.IMAGE_FQDN }}
           tags: |
@@ -51,7 +51,7 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          target: jodconverter-rest
+          target: jodconverter-build-rest
           build-args: |
             BASE_VERSION=${{ env.IMAGE_FQDN }}
           push: push
@@ -64,7 +64,7 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          target: jodconverter-gui
+          target: jodconverter-build-gui
           build-args: |
             BASE_VERSION=${{ env.IMAGE_FQDN }}
           push: push
