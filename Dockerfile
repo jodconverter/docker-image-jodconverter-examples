@@ -1,6 +1,6 @@
 ARG BASE_VERSION
 #  ----------------------------------  Base image
-FROM ghcr.io/jodconverter/jodconverter-base:$BASE_VERSION as jodconverter-app-base
+FROM ghcr.io/jodconverter/jodconverter-runtime:$BASE_VERSION as jodconverter-app-base
 ENV JAR_FILE_NAME=app.war
 ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log

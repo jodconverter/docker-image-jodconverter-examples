@@ -31,7 +31,7 @@ For more please check the wiki at https://github.com/jodconverter/jodconverter
 
 ## Docker images
 
-- `ghcr.io/jodconverter/jodconverter-base` - OpenJDK 17: libreoffice included, also start scripts but now actual applications
+- `ghcr.io/jodconverter/jodconverter-rutime` - OpenJDK 17: libreoffice included, also start scripts but now actual applications
 - `ghcr.io/jodconverter/jodconverter-examples:gui` - OpenJDK 17: the WebGUI, spring based converter
 - `ghcr.io/jodconverter/jodconverter-examples:rest` - OpenJDK 17: rest only variant
 
