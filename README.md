@@ -1,4 +1,7 @@
-[![build-and-push](https://github.com/jodconverter/docker-image-jodconverter/actions/workflows/build.yml/badge.svg)](https://github.com/jodconverter/docker-image-jodconverter/actions/workflows/build.yml)
+[![build-and-push](https://github.com/jodconverter/docker-image-jodconverter-examples/actions/workflows/build.yml/badge.svg)](https://github.com/jodconverter/docker-image-jodconverter-examples/actions/workflows/build.yml)
+
+**Hint:** This project has moved from [eugenmayer/docker-image-jodconverter](https://github.com/eugenmayer/docker-image-jodconverter) to [jodconverter/docker-image-jodconverter-examples](https://github.com/jodconverter/docker-image-jodconverter-examples)
+since it is just the better home for obvious reasons :)
 
 ## Wat
 
@@ -7,9 +10,6 @@ Utilizes the example java projects of [JODconverter](https://github.com/jodconve
 Other projects:
     - The examples here are based on the [jodconverter-runtime](https://github.com/jodconverter/docker-image-jodconverter-runtime) docker image
     - office conversion, production leaning - see [eugenmayer/officeconverter](https://github.com/EugenMayer/officeconverter).
-
-Hint: This project has moved from [eugenmayer/docker-image-jodconverter](https://github.com/eugenmayer/docker-image-jodconverter) to [jodconverter/docker-image-jodconverter](https://github.com/jodconverter/docker-image-jodconverter)
-since it is just the better home for obvious reasons :)
 
 ## Run examples
 
