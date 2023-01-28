@@ -22,21 +22,23 @@ CMD ["--spring.config.additional-location=optional:/etc/app/"]
 FROM bellsoft/liberica-openjdk-debian:17 as builder
 RUN apt-get update \
   && apt-get -y install git \
-  && git clone https://github.com/jodconverter/jodconverter /tmp/jodconverter \
+  && git clone https://github.com/jodconverter/jodconverter-samples /tmp/jodconverter-samples \
+  ## fixing https://github.com/jodconverter/jodconverter-samples/issues/2
+  && chmod +x /tmp/jodconverter-samples/gradlew \
   && mkdir /dist
 
 #  ---------------------------------- gui builder
 FROM builder as jodconverter-build-gui
-WORKDIR /tmp/jodconverter/jodconverter-samples/jodconverter-sample-spring-boot
-RUN ../../gradlew -x test build \
-  && cp build/libs/*SNAPSHOT.war /dist/jodconverter-gui.war
+WORKDIR /tmp/jodconverter-samples
+RUN ./gradlew -x test :samples:spring-boot-webapp:build \
+  && cp samples/spring-boot-webapp/build/libs/spring-boot-webapp.war /dist/jodconverter-gui.war
 
 
 #  ----------------------------------  rest build
 FROM builder as jodconverter-build-rest
-WORKDIR /tmp/jodconverter/jodconverter-samples/jodconverter-sample-rest
-RUN ../../gradlew -x test build \
-  && cp build/libs/*SNAPSHOT.war /dist/jodconverter-rest.war
+WORKDIR /tmp/jodconverter-samples
+RUN ./gradlew -x test :samples:spring-boot-rest:build \
+  && cp samples/spring-boot-rest/build/libs/spring-boot-rest.war /dist/jodconverter-rest.war
 
 
 #  ----------------------------------  GUI prod image
